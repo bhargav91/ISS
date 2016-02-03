@@ -1,11 +1,9 @@
 Ext.define('ISS.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
-    requires: ['ISS.view.Map', 'ISS.view.main.MainController', 'ISS.view.main.MainModel'],
-
-    controller: 'main-main', // Create the controller instance
-    viewModel: 'main-main', // Create the view model instance
-
+    requires: ['ISS.view.Map', 'ISS.view.main.MainController', 'ISS.view.main.MainModel', 'ISS.view.Passes'],
+    controller: 'main-main',
+    viewModel: 'main-main',
     tabBarPosition: 'bottom',
     items: [{
         xtype: 'issmap',
@@ -15,12 +13,12 @@ Ext.define('ISS.view.main.Main', {
             coordinate: '{coordinate}'
         }
     }, {
-        xtype: 'container',
-        html: 'Passes goes here',
-
+        xtype: 'isspasses',
         title: 'Passes',
-        iconCls: 'x-fa fa-list-ul'
-
+        iconCls: 'x-fa fa-list-ul',
+        bind: {
+            store: '{passes}'
+        }
     }, {
         xtype: 'container',
         html: 'Astronauts go here',
@@ -30,3 +28,4 @@ Ext.define('ISS.view.main.Main', {
 
     }]
 });
+
